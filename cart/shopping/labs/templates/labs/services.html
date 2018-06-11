@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block head %}
+	<title>MedPro | Labs</title> 
+<style>
+.nav-pills .nav-link {
+    color: white;
+}
+.nav-link {
+    color: white;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-dark bg-primary">
+    <div class="nav nav-pills">
+      <a class="nav-item nav-link" href="{% url 'shop' %}">Home</a>
+      <a class="nav-item nav-link" href="{% url 'addlabs' %}">Labs</a>
+      <a class="nav-item nav-link" href="{% url 'addservices' %}">Services</a>
+      
+        
+    </div>
+ <a class="nav-item nav-link" href="{% url 'signout' %}">Sign Out</a>
+</nav>
+ 
+
+<div class="container">
+<div class="row">
+{% for obj in object%}
+  <div class="col-4 mt-4">
+      <div class="card text-center">
+  
+          
+        <div class="card-header">
+            
+            {{obj.Servicename}}
+        </div>
+    <div class="card-body">
+    <h5 class="card-title">{{obj.Price}}</h5>
+    <p><b>{{obj.Labname}}</b></p>
+    <p>{{obj.Description}}</p>
+    </div>
+          
+    <div class="card-footer">
+    <a href="#" class="btn btn-primary">Buy Now</a>
+  </div>
+         
+</div>
+        
+</div>  
+{% endfor%}  
+
+</div>
+{% endblock %}

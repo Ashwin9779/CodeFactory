@@ -18,5 +18,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('labs/',include('labs.urls')),
+    path('labsatcall/',include('labs.urls')),
+    path('oauth/', include('social_django.urls', namespace='social')),
 ]

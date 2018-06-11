@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block head %}
+	<title> labsatcall | Add Labs </title> 
+<style>
+.nav-pills .nav-link {
+    color: white;
+}
+.nav-link {
+    color: white;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-dark bg-primary">
+    <div class="nav nav-pills">
+      <a class="nav-item nav-link" href="{% url 'shop' %}">Home</a>
+      <a class="nav-item nav-link" href="{% url 'addlabs' %}">Labs</a>
+      <a class="nav-item nav-link" href="{% url 'addservices' %}">Services</a>
+      
+        
+    </div>
+ <a class="nav-item nav-link" href="{% url 'signout' %}">Sign Out</a>
+</nav>
+ 
+
+<div class="container "> 
+    <div >
+        <div align="center">
+            <br>
+            <img src="http://www.labsatcall.com/img/labs-at-call-logo-1524573819.jpg" class="img-fluid" alt="labsatcall">
+            <br>
+            <br>
+            <h1>Hatch Services !!</h1>
+        </div>
+        <br>
+        <br>
+    <form  class="form-group "  method="post" >
+      {% csrf_token%}
+    
+
+    
+<div class="col-md-12">
+    
+
+    
+    <div class="row form-group ">
+        <div class="col-md-2"><label for="Labname">Lab Name</label></div> 
+        <div class="col-md-2"><label for="Servicename">Service Name</label></div>
+        <div class="col-md-2"><label for="Servicecode">Service Code</label></div>
+        <div class="col-md-2"><label for="Price">Price</label></div>
+        <div class="col-md-2"><label for="Description">Description</label></div>
+        
+    </div>
+   <div id="row1">
+       <div style="margin-bottom: 20px" class="row form-group">
+        <div class="col-md-2">
+    <select name="Labname" class="form-control" required id="ddlViewBy">
+            
+            {% for obj in object%}
+                
+            <option >{{obj.Name}} </option>
+                    
+            {% endfor%}
+  
+</select>
+</div> 
+
+        <div class="col-md-2"><input type="text" name="Servicename"  class="form-control day"></div>
+        <div class="col-md-2"><input type="text" name="Servicecode"  class="form-control day"></div>
+        <div class="col-md-2"><input type="text" name="Price"  class="form-control day"></div>
+        <div class="col-md-4"><input type="text" name="Description"  class="form-control day"></div>
+        
+        </div>
+   </div> 
+    <div id="row2"> </div>
+    </div>
+   
+
+    
+   <br> 
+ <div align="center">
+     
+  
+ <button type="button" name = "range"class="btn btn-default" onclick="add('row2')">+ Add Other Service</button>
+      <br>
+     <br>
+    
+ 
+ <button type="submit" class="btn btn-primary background ">Save</button>
+ <a href="{% url 'addservices' %}"><button type="button" class="btn btn-primary background ">Cancel</button></a>
+</div>
+   
+</form>
+
+
+    <script type="text/javascript">
+        
+function add(divName){
+      
+                var newdiv = document.createElement('div');
+                var y = document.getElementById("row1").innerHTML;
+                newdiv.innerHTML = y;
+                document.getElementById(divName).appendChild(newdiv);
+          
+     }
+
+    </script>
+   
+</div>
+</div>
+
+{% endblock %}

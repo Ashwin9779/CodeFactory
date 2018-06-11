@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block head %}
+	<title>labsatcall | Sign in</title> 
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container "> 
+    
+    <div>
+        <div align="center">
+            <br>
+            <img src="http://www.labsatcall.com/img/labs-at-call-logo-1524573819.jpg" class="img-fluid" alt="labsatcall">
+            <br>
+            <br>
+            
+            <h1>Sign in Here !! </h1>
+        </div>
+        <br>
+    <div class="col-md-4 offset-md-4">
+        
+        <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+        <label>User Name</label>
+            <input type="text" name="username" class="form-control">
+        </div>
+        <div class="form-group">
+        <label>Password</label>
+            <input type="password" name="password" class="form-control">
+        </div>            
+       
+        <strong>{{x}}</strong><br>
+             
+        <button type="submit" class="btn btn-primary btn-block"> Sign in </button>
+        <br>
+            
+        <div class="form-group"> Forgot Password ?</div>
+        </form>
+        <div>
+            <b>Don't have an account <a href="{% url 'signup' %}" > Sign up</a> here !!</b>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div>
+        <a href="{% url 'social:begin' 'facebook' %}"><button type="button" class="btn btn-default btn-block"> Facebook Sign In</button></a>
+        </div>
+        
+        
+    </div>
+   
+</div>
+    
+
+
+{% endblock %}
